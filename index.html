@@ -8,6 +8,39 @@
   </head>
   <body>
     <div id="root"></div>
+    <template id="hello-world">
+      
+      <style>
+        p {
+          text-align: center;
+          font-weight: normal;
+          padding: 0.5em;
+          margin: 1px 0;
+          background-color: #eee;
+          border: 1px solid #666;
+        }
+      </style>
+      
+      <p class="hw-text"></p>
+      <p class="hw-text"></p>
+      <p class="hw-text"></p>
+    
+    </template>
+    <template id="hello-world-slot">
+      <style>
+        slot[name="msgtext"] { color: green; }
+      </style>
+      <slot name="msgtext" class="hw-text"></slot>
+      <slot></slot>
+    </template>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/kinsta/hello-world.js"></script>
+    <script type="module" src="/src/kinsta/hello-shadow-world.js"></script>
+    <hello-world name="Chuck"></hello-world>
+    <hello-world-shadow name="Chuck Shadow"></hello-world-shadow>
+    <hello-world-shadow name="Craig">
+      <h1 slot="msgtext">Hello Default!</h1>
+      <p>This text will become part of the component.</p>
+    </hello-world-shadow>
   </body>
 </html>
